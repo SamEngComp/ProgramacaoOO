@@ -29,11 +29,16 @@ public class Main {
 		con3.adicionarTelefone(tel4);
 		
 		System.out.println(agenda.toString());
+		
+		/*Altera o nome e o email do Contato*/
 		agenda.alterarContato(con3, "Samuel", "louco@gmail.com");
 		System.out.println(con3.toString());
-		agenda.removerContato(con3);
 		
+		/*Remove o Contato*/
+		agenda.removerContato(con3);
 		System.out.println("\n"+agenda.toString());
 		
+		/*Buscar o Contato pelo nome*/
+		System.out.println("\n"+agenda.buscarContato("Samuel").toString());
 	}
 }
