@@ -1,6 +1,5 @@
-
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 public class AgendaTel {
 	List<Contato> contatos = new ArrayList<Contato>();
 	
@@ -40,32 +39,28 @@ public class AgendaTel {
 		return false;
 	}
 	
-	Contato buscarContato(Contato contato){
+	Contato buscarContato(String nome){
 		
-		for(int i = 0; i < this.contatos.size(); i++){
-			if(this.contatos.get(i).nome == contato.getNome()) {
-				//if(this.contatos.get(i).email == contato.getEmail()) {
-					return this.contatos.get(i);
-				//}
+			
+			for(int i = 0; i < this.contatos.size(); i++){	
+				if(this.contatos.get(i).getNome().equals(nome)) {
+						return this.contatos.get(i);
+				}
 			}
-		}
 		
-		return null;
+		Contato aux = new Contato(null, null);
+		return aux;
 	}
 	
 	boolean alterarContato(Contato contato, String nome, String email) {
-		if(contato.getNome() != null && !contato.tel.isEmpty()) {
-			Contato aux = buscarContato(contato);
-			if(aux != null) {
-				int i = this.contatos.indexOf(aux);
+		if(contato.getNome() != null && contato.getEmail() != null) {
 				if(nome != null)
-				this.contatos.get(i).nome = nome;
+				contato.setNome(nome);;
 				
 				if(email != null)
-				this.contatos.get(i).email = email;
+				contato.setEmail(email);
 				
 				return true;
-			}
 		}
 		return false;
 	}
