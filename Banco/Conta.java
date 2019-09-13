@@ -81,3 +81,44 @@ public class Conta {
 		return false;
 	}
 }
+
+
+
+
+
+
+
+public class ContaEspecial extends Conta {
+	
+	float limite;
+	
+	ContaEspecial(float limite, int numero, double saldo, Cliente cliente) {
+		super(numero, saldo, cliente);
+		this.limite = limite;
+	}
+
+	public float getLimite() {
+		return limite;
+	}
+
+	public void setLimite(float limite) {
+		this.limite = limite;
+	}
+	
+	@Override
+	boolean sacar(Operacao operacao){
+		if(operacao.getTipoOperacao() == "sacar"){
+			if(operacao.getValor() <= this.getSaldo()){
+				this.saldo -= operacao.getValor();
+				return true;
+			}else if(operacao.getValor() <= this.getSaldo()+this.getLimite() && operacao.getValor() > 0){
+				op -= this.saldo;
+				this.saldo = 0.0;
+				this.limite =
+				return true;
+			}
+		}
+		return false;
+	}
+
+}
